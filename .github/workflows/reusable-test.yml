@@ -182,7 +182,7 @@ jobs:
       id: run_pre_test_command_self_hosted
       working-directory: ./${{env.BUILD_PLATFORM}}/${{env.BUILD_CONFIGURATION}}
       run: |
-        if (${{ runner.name }} -like "igklemen-runner-*") {
+        if ("${{ runner.name }}" -like "igklemen-runner-*") {
           ${{env.PRE_COMMAND}} -SelfHostedRunnerName ${{ runner.name }}
         }
 
@@ -243,7 +243,7 @@ jobs:
       id: run_post_test_command
       working-directory: ./${{env.BUILD_PLATFORM}}/${{env.BUILD_CONFIGURATION}}
       run: |
-        if (${{ runner.name }} -like "igklemen-runner-*") {
+        if ("${{ runner.name }}" -like "igklemen-runner-*") {
           ${{env.POST_COMMAND}} -SelfHostedRunnerName ${{ runner.name }}
         }
         else {
