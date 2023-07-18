@@ -42,7 +42,7 @@ Get-RegressionTestArtifacts
 Export-BuildArtifactsToVMs -VMList $VMList -ErrorAction Stop
 
 # Configure network adapters on VMs.
-Initialize-NetworkInterfacesOnVMs $MultiVMTestConfig.$SelfHostedRunnerName -ErrorAction Stop
+Initialize-NetworkInterfacesOnVMs $MultiVMTestConfig -ErrorAction Stop
 
 # Install eBPF Components on the test VM.
 foreach($VM in $VMList) {
