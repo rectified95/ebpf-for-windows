@@ -5,7 +5,8 @@ param ([parameter(Mandatory=$false)][string] $Target = "TEST_VM",
        [parameter(Mandatory=$false)][string] $LogFileName = "TestLog.log",
        [parameter(Mandatory=$false)][string] $WorkingDirectory = $pwd.ToString(),
        [parameter(Mandatory=$false)][string] $VMListJsonFileName = "vm_list.json",
-       [parameter(Mandatory=$false)][string] $TestExecutionJsonFileName = "test_execution.json")
+       [parameter(Mandatory=$false)][string] $TestExecutionJsonFileName = "test_execution.json",
+       [parameter(Mandatory=$false)][string] $SelfHostedRunnerName)
 
 Push-Location $WorkingDirectory
 
@@ -17,11 +18,11 @@ Import-Module .\config_test_vm.psm1 -Force -ArgumentList ($TestVMCredential.User
 
 # Read the config json.
 $Config = Get-Content ("{0}\{1}" -f $PSScriptRoot, $VMListJsonFileName) | ConvertFrom-Json
-$VMList = $Config.VMList
+$VMList = $Config.VMList.$SelfHostedRunnerName
 
 # Read the test execution json.
 $TestExecutionConfig = Get-Content ("{0}\{1}" -f $PSScriptRoot, $TestExecutionJsonFileName) | ConvertFrom-Json
-$MultiVMTestConfig = $TestExecutionConfig.MultiVMTest
+$MultiVMTestConfig = $TestExecutionConfig.MultiVMTest.$SelfHostedRunnerName
 
 # Delete old log files if any.
 Remove-Item "$env:TEMP\$LogFileName" -ErrorAction SilentlyContinue
@@ -43,7 +44,7 @@ Get-Duonic
 Export-BuildArtifactsToVMs -VMList $VMList -ErrorAction Stop
 
 # Configure network adapters on VMs.
-Initialize-NetworkInterfacesOnVMs $MultiVMTestConfig -ErrorAction Stop
+Initialize-NetworkInterfacesOnVMs $MultiVMTestConfig.$SelfHostedRunnerName -ErrorAction Stop
 
 # Install eBPF Components on the test VM.
 foreach($VM in $VMList) {
