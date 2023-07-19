@@ -6,7 +6,7 @@ param ([parameter(Mandatory=$false)][string] $AdminTarget = "TEST_VM",
        [parameter(Mandatory=$false)][string] $LogFileName = "TestLog.log",
        [parameter(Mandatory=$false)][string] $WorkingDirectory = $pwd.ToString(),
        [parameter(Mandatory=$false)][string] $TestExecutionJsonFileName = "test_execution.json",
-       [parameter(Mandatory=$false)][bool] $Coverage = $true,
+       [parameter(Mandatory=$false)][bool] $Coverage = $false,
        [parameter(Mandatory=$false)][string] $SelfHostedRunnerName)
 
 Push-Location $WorkingDirectory
