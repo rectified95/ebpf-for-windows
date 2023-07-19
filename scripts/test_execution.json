@@ -83,6 +83,7 @@
             "DestinationPort": 4444,
             "ProxyPort": 4443
         },
+        "igklemen-runner-2":
         {
             "V4VipAddress": "192.168.1.100",
             "V6VipAddress": "fc00::1:100",
