@@ -38,7 +38,7 @@
                 "Interfaces":
                 [
                     {
-                        "Alias": "Ethernet",
+                        "Alias": "Ethernet 2",
                         "V4Address": "20.0.0.3",
                         "V6Address": "2001:db8::3"
                     }
@@ -52,12 +52,12 @@
                 "Interfaces":
                 [
                     {
-                        "Alias": "Ethernet",
+                        "Alias": "Ethernet 2",
                         "V4Address": "20.0.0.4",
                         "V6Address": "2001:db8::4"
                     },
                     {
-                        "Alias": "Ethernet 2",
+                        "Alias": "Ethernet 3",
                         "V4Address": "20.0.0.5",
                         "V6Address": "2001:db8::5"
                     }
@@ -68,7 +68,7 @@
                 "Interfaces":
                 [
                     {
-                        "Alias": "Ethernet",
+                        "Alias": "Ethernet 2",
                         "V4Address": "20.0.0.6",
                         "V6Address": "2001:db8::6"
                     }
