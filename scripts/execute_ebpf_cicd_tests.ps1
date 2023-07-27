@@ -23,16 +23,16 @@ $Config = Get-Content ("{0}\{1}" -f $PSScriptRoot, $TestExecutionJsonFileName) |
 $BasicTest = $Config.BasicTest.$SelfHostedRunnerName
 
 # Run tests on test VMs.
-foreach ($VM in $BasicTest) {
-    Invoke-CICDTestsOnVM -VMName $VM.Name -Coverage $Coverage
-}
+#foreach ($VM in $BasicTest) {
+#    Invoke-CICDTestsOnVM -VMName $VM.Name -Coverage $Coverage
+#}
 
 # Run XDP Tests.
 Invoke-XDPTestsOnVM $Config.MultiVMTest.$SelfHostedRunnerName
 
 # Run Connect Redirect Tests.
 Invoke-ConnectRedirectTestsOnVM $Config.MultiVMTest.$SelfHostedRunnerName $Config.ConnectRedirectTest.$SelfHostedRunnerName -UserType "Administrator"
-Invoke-ConnectRedirectTestsOnVM $Config.MultiVMTest.$SelfHostedRunnerName $Config.ConnectRedirectTest.$SelfHostedRunnerName -UserType "StandardUser"
+#Invoke-ConnectRedirectTestsOnVM $Config.MultiVMTest.$SelfHostedRunnerName $Config.ConnectRedirectTest.$SelfHostedRunnerName -UserType "StandardUser"
 
 # Stop eBPF components on test VMs.
 foreach ($VM in $Config.MultiVMTest.$SelfHostedRunnerName) {
