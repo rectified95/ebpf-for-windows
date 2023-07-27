@@ -2,12 +2,24 @@
     "license":["Copyright (c) Microsoft Corporation", "SPDX-License-Identifier: MIT"],
 
     "VMList":
-    [
-        {
-            "Name": "vm1"
-        },
-        {
-            "Name": "vm2"
-        }
-    ]
+    {
+        "igklemen-runner-1":
+        [
+            {
+                "Name": "vm1"
+            },
+            {
+                "Name": "vm2"
+            }
+        ],
+        "igklemen-runner-2":
+        [
+            {
+                "Name": "vm3"
+            },
+            {
+                "Name": "vm4"
+            }
+        ]
+    }
 }
